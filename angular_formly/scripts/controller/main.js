@@ -60,10 +60,48 @@
             key: 'insurance',
             type: 'input',
             templateOptions: {
-            	label: 'Insurance Policy Number',
-            	placeholder: 'Enter your insurance policy number'
+                label: 'Insurance Policy Number',
+                placeholder: 'Enter your insurance policy number'
             },
             hideExpression: '!model.under25 || !model.province'
+        }, {
+            key: 'license',
+            type: 'input',
+            templateOptions: {
+                label: 'Driver\'s License Number',
+                placeholder: 'Enter your drivers license number'
+            },
+            hideExpression: '!model.province',
+            validators: {
+                // Custom validator to check whether the driver's license
+                // number that the user enters is valid or not
+                driversLicense: function($viewValue, $modelValue, scope) {
+                    var value = $modelValue || $viewValue;
+                    if (value) {
+                        // call the validateDriversLicense function
+                        // which either returns true or false
+                        // depending on whether the entry is valid
+                        return validateDriversLicense(value);
+                    }
+                }
+            },
+            expressionProperties: {
+                // We currently only have a driver's license pattern for Ontario
+                // so we need to disable this field if we've picked a province/territory
+                // other than Ontario
+                'templateOptions.disabled': function($viewValue, $modelValue, scope) {
+                    if (scope.model.province === 'ontario') {
+                        return false;
+                    }
+                    return true;
+                }
+            }
         }];
+    }
+    // Tests the input based on a helpful regular expression
+    // gratefully borrowed from jQuery.formance by Omar Shammas
+    // https://github.com/omarshammas/jquery.formance
+    function validateDriversLicense(value) {
+        return /[A-Za-z]\d{4}[\s|\-]*\d{5}[\s|\-]*\d{5}$/.test(value);
     }
 })();
