@@ -63,7 +63,7 @@
             	label: 'Insurance Policy Number',
             	placeholder: 'Enter your insurance policy number'
             },
-            hideExpression: '!model.email || !model.province'
+            hideExpression: '!model.under25 || !model.province'
         }];
     }
 })();
