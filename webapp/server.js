@@ -71,5 +71,8 @@ app.delete('/api/todos/:todo_id', function(req, res) {
     });
 });
 // listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App is listenning on port 8080");
+var server = app.listen(8080, function() {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('Example app listening at http://%s:%s', host, port);
+});
