@@ -1,4 +1,4 @@
-test_demo
+testing
 ================
 
 This is the testing demostration for unit testing in AngularJS. The application utilizing Karma as the test runner and Mocha, Chai, Sinon as testing libraries. In order to run the application testing suites, do the following:
