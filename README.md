@@ -6,6 +6,9 @@ This is the demo application utilizing AngularJS framework to develop small work
 
 This is a demo on how testing on AngularJS would work. More information can be found inside the project directory
 
+### ui-router
+This is a demo on how to use angular-ui router to setup routings for web applications
+
 ### validation
 
 This is a demo on how to create and validate forms in AngularJS . More information can be found inside the project directory
